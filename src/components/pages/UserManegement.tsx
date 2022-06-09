@@ -3,7 +3,7 @@ import { memo, VFC } from "react";
 
 export const UserManagement: VFC = memo(() => {
   return (
-    <Wrap>
+    <Wrap p={{ base: 4, md: 10 }}>
       <WrapItem>
         <Box
           w="260px"
