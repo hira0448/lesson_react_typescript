@@ -12,6 +12,7 @@ export const UserManagement: VFC = memo(() => {
           borderRadius="10px"
           shadow="md"
           p={4}
+          _hover={{ cursor: "pointer", opacity: 0.8 }}
         >
           <Stack textAlign="center">
             <Image
