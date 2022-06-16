@@ -10,16 +10,23 @@ import {
 import { memo, useCallback, useEffect, VFC } from "react";
 
 import { UserCard } from "../organisms/user/UserCard";
-import { useAllUsers } from "../../hooks/useAllUsers";
 import { UserDetailModal } from "../organisms/user/UserDetailModal";
+import { useAllUsers } from "../../hooks/useAllUsers";
+import { useSelectUser } from "../../hooks/useSelectUser";
 
 export const UserManagement: VFC = memo(() => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { getUsers, users, loading } = useAllUsers();
+  const { onSelectUser, selectedUser } = useSelectUser();
 
   useEffect(() => getUsers(), []);
 
-  const onClickUser = useCallback(() => onOpen(), []);
+  const onClickUser = useCallback(
+    (id: number) => {
+      onSelectUser({ id, users, onOpen });
+    },
+    [users, onSelectUser, onOpen]
+  );
 
   return (
     <>
@@ -42,7 +49,7 @@ export const UserManagement: VFC = memo(() => {
           ))}
         </Wrap>
       )}
-      <UserDetailModal isOpen={isOpen} onClose={onClose} />
+      <UserDetailModal user={selectedUser} isOpen={isOpen} onClose={onClose} />
     </>
   );
 });
