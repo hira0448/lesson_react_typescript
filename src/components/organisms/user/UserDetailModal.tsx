@@ -1,8 +1,6 @@
 import {
-  Box,
   FormControl,
   FormLabel,
-  Image,
   Input,
   Modal,
   ModalBody,
@@ -10,8 +8,7 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
-  Stack,
-  Text
+  Stack
 } from "@chakra-ui/react";
 import { memo, VFC } from "react";
 import { User } from "../../../types/api/user";
